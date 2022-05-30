@@ -1,0 +1,9 @@
+{
+  "name": "loop",
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "@pkgs/allocator": "workspace:^",
+    "@pkgs/dispatcher": "workspace:^",
+    "@pkgs/io_uring": "workspace:^"
+  }
+}
