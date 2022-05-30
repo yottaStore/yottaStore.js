@@ -1,0 +1,5 @@
+{
+  "name": "@pkgs/io_uring",
+  "main": "index.mjs",
+  "packageManager": "yarn@3.2.1"
+}
