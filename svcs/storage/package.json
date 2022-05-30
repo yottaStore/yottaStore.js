@@ -1,4 +1,4 @@
 {
-  "name": "nodeEV",
+  "name": "@svsc/storage",
   "packageManager": "yarn@3.2.1"
 }

@@ -37,6 +37,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:pkgs/allocator"\
       },\
       {\
+        "name": "@pkgs/consumer",\
+        "reference": "workspace:pkgs/consumer"\
+      },\
+      {\
         "name": "@pkgs/dispatcher",\
         "reference": "workspace:pkgs/dispatcher"\
       },\
@@ -45,8 +49,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:pkgs/io_uring"\
       },\
       {\
-        "name": "loop",\
-        "reference": "workspace:pkgs/loop"\
+        "name": "@pkgs/worker",\
+        "reference": "workspace:pkgs/worker"\
       },\
       {\
         "name": "@svcs/compute",\
@@ -54,11 +58,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       },\
       {\
         "name": "nodeEV",\
-        "reference": "workspace:svcs/nodeEV"\
+        "reference": "workspace:svcs/node"\
       },\
       {\
-        "name": "@svsc/store",\
-        "reference": "workspace:svcs/store"\
+        "name": "@svsc/storage",\
+        "reference": "workspace:svcs/storage"\
       }\
     ],\
     "enableTopLevelFallback": true,\
@@ -66,15 +70,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
       ["@libs/build", ["workspace:libs/build"]],\
       ["@pkgs/allocator", ["workspace:pkgs/allocator"]],\
+      ["@pkgs/consumer", ["workspace:pkgs/consumer"]],\
       ["@pkgs/dispatcher", ["workspace:pkgs/dispatcher"]],\
       ["@pkgs/io_uring", ["workspace:pkgs/io_uring"]],\
+      ["@pkgs/worker", ["workspace:pkgs/worker"]],\
       ["@svcs/compute", ["workspace:svcs/compute"]],\
-      ["@svsc/store", ["workspace:svcs/store"]],\
+      ["@svsc/storage", ["workspace:svcs/storage"]],\
       ["@yottastore/yottaStore.js", ["workspace:."]],\
       ["dist", ["workspace:dist"]],\
       ["docs", ["workspace:docs"]],\
-      ["loop", ["workspace:pkgs/loop"]],\
-      ["nodeEV", ["workspace:svcs/nodeEV"]]\
+      ["nodeEV", ["workspace:svcs/node"]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -105,6 +110,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@pkgs/consumer", [\
+        ["workspace:pkgs/consumer", {\
+          "packageLocation": "./pkgs/consumer/",\
+          "packageDependencies": [\
+            ["@pkgs/consumer", "workspace:pkgs/consumer"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["@pkgs/dispatcher", [\
         ["workspace:pkgs/dispatcher", {\
           "packageLocation": "./pkgs/dispatcher/",\
@@ -123,6 +137,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@pkgs/worker", [\
+        ["workspace:pkgs/worker", {\
+          "packageLocation": "./pkgs/worker/",\
+          "packageDependencies": [\
+            ["@pkgs/worker", "workspace:pkgs/worker"],\
+            ["@pkgs/allocator", "workspace:pkgs/allocator"],\
+            ["@pkgs/dispatcher", "workspace:pkgs/dispatcher"],\
+            ["@pkgs/io_uring", "workspace:pkgs/io_uring"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["@svcs/compute", [\
         ["workspace:svcs/compute", {\
           "packageLocation": "./svcs/compute/",\
@@ -132,11 +158,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["@svsc/store", [\
-        ["workspace:svcs/store", {\
-          "packageLocation": "./svcs/store/",\
+      ["@svsc/storage", [\
+        ["workspace:svcs/storage", {\
+          "packageLocation": "./svcs/storage/",\
           "packageDependencies": [\
-            ["@svsc/store", "workspace:svcs/store"]\
+            ["@svsc/storage", "workspace:svcs/storage"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -168,23 +194,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["loop", [\
-        ["workspace:pkgs/loop", {\
-          "packageLocation": "./pkgs/loop/",\
-          "packageDependencies": [\
-            ["loop", "workspace:pkgs/loop"],\
-            ["@pkgs/allocator", "workspace:pkgs/allocator"],\
-            ["@pkgs/dispatcher", "workspace:pkgs/dispatcher"],\
-            ["@pkgs/io_uring", "workspace:pkgs/io_uring"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
       ["nodeEV", [\
-        ["workspace:svcs/nodeEV", {\
-          "packageLocation": "./svcs/nodeEV/",\
+        ["workspace:svcs/node", {\
+          "packageLocation": "./svcs/node/",\
           "packageDependencies": [\
-            ["nodeEV", "workspace:svcs/nodeEV"]\
+            ["nodeEV", "workspace:svcs/node"],\
+            ["@libs/build", "workspace:libs/build"],\
+            ["@pkgs/consumer", "workspace:pkgs/consumer"],\
+            ["@pkgs/worker", "workspace:pkgs/worker"]\
           ],\
           "linkType": "SOFT"\
         }]\

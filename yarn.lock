@@ -4,7 +4,7 @@
 __metadata:
   version: 6
 
-"@libs/build@workspace:libs/build":
+"@libs/build@workspace:^, @libs/build@workspace:libs/build":
   version: 0.0.0-use.local
   resolution: "@libs/build@workspace:libs/build"
   languageName: unknown
@@ -13,6 +13,12 @@ __metadata:
 "@pkgs/allocator@workspace:^, @pkgs/allocator@workspace:pkgs/allocator":
   version: 0.0.0-use.local
   resolution: "@pkgs/allocator@workspace:pkgs/allocator"
+  languageName: unknown
+  linkType: soft
+
+"@pkgs/consumer@workspace:^, @pkgs/consumer@workspace:pkgs/consumer":
+  version: 0.0.0-use.local
+  resolution: "@pkgs/consumer@workspace:pkgs/consumer"
   languageName: unknown
   linkType: soft
 
@@ -28,15 +34,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pkgs/worker@workspace:^, @pkgs/worker@workspace:pkgs/worker":
+  version: 0.0.0-use.local
+  resolution: "@pkgs/worker@workspace:pkgs/worker"
+  dependencies:
+    "@pkgs/allocator": "workspace:^"
+    "@pkgs/dispatcher": "workspace:^"
+    "@pkgs/io_uring": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
 "@svcs/compute@workspace:svcs/compute":
   version: 0.0.0-use.local
   resolution: "@svcs/compute@workspace:svcs/compute"
   languageName: unknown
   linkType: soft
 
-"@svsc/store@workspace:svcs/store":
+"@svsc/storage@workspace:svcs/storage":
   version: 0.0.0-use.local
-  resolution: "@svsc/store@workspace:svcs/store"
+  resolution: "@svsc/storage@workspace:svcs/storage"
   languageName: unknown
   linkType: soft
 
@@ -58,18 +74,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"loop@workspace:pkgs/loop":
+"nodeEV@workspace:svcs/node":
   version: 0.0.0-use.local
-  resolution: "loop@workspace:pkgs/loop"
+  resolution: "nodeEV@workspace:svcs/node"
   dependencies:
-    "@pkgs/allocator": "workspace:^"
-    "@pkgs/dispatcher": "workspace:^"
-    "@pkgs/io_uring": "workspace:^"
-  languageName: unknown
-  linkType: soft
-
-"nodeEV@workspace:svcs/nodeEV":
-  version: 0.0.0-use.local
-  resolution: "nodeEV@workspace:svcs/nodeEV"
+    "@libs/build": "workspace:^"
+    "@pkgs/consumer": "workspace:^"
+    "@pkgs/worker": "workspace:^"
   languageName: unknown
   linkType: soft

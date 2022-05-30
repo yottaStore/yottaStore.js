@@ -1,0 +1,9 @@
+{
+  "name": "nodeEV",
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "@libs/build": "workspace:^",
+    "@pkgs/consumer": "workspace:^",
+    "@pkgs/worker": "workspace:^"
+  }
+}
