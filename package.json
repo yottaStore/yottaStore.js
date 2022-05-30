@@ -1,0 +1,11 @@
+{
+  "name": "@yottastore/yottaStore.js",
+  "workspaces": [
+    "dist",
+    "docs",
+    "libs/*",
+    "pkgs/*",
+    "svcs/*"
+  ],
+  "packageManager": "yarn@3.2.1"
+}
