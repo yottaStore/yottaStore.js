@@ -16,6 +16,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pkgs/consumer@workspace:^, @pkgs/consumer@workspace:pkgs/consumer":
+  version: 0.0.0-use.local
+  resolution: "@pkgs/consumer@workspace:pkgs/consumer"
+  languageName: unknown
+  linkType: soft
+
 "@pkgs/dispatcher@workspace:^, @pkgs/dispatcher@workspace:pkgs/dispatcher":
   version: 0.0.0-use.local
   resolution: "@pkgs/dispatcher@workspace:pkgs/dispatcher"
@@ -28,15 +34,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pkgs/loop@workspace:^, @pkgs/loop@workspace:pkgs/loop":
+  version: 0.0.0-use.local
+  resolution: "@pkgs/loop@workspace:pkgs/loop"
+  dependencies:
+    "@pkgs/allocator": "workspace:^"
+    "@pkgs/dispatcher": "workspace:^"
+    "@pkgs/io_uring": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
 "@svcs/compute@workspace:svcs/compute":
   version: 0.0.0-use.local
   resolution: "@svcs/compute@workspace:svcs/compute"
   languageName: unknown
   linkType: soft
 
-"@svsc/store@workspace:svcs/store":
+"@svsc/storage@workspace:svcs/storage":
   version: 0.0.0-use.local
-  resolution: "@svsc/store@workspace:svcs/store"
+  resolution: "@svsc/storage@workspace:svcs/storage"
   languageName: unknown
   linkType: soft
 
@@ -58,18 +74,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"loop@workspace:pkgs/loop":
-  version: 0.0.0-use.local
-  resolution: "loop@workspace:pkgs/loop"
-  dependencies:
-    "@pkgs/allocator": "workspace:^"
-    "@pkgs/dispatcher": "workspace:^"
-    "@pkgs/io_uring": "workspace:^"
-  languageName: unknown
-  linkType: soft
-
 "nodeEV@workspace:svcs/nodeEV":
   version: 0.0.0-use.local
   resolution: "nodeEV@workspace:svcs/nodeEV"
+  dependencies:
+    "@pkgs/consumer": "workspace:^"
+    "@pkgs/loop": "workspace:^"
   languageName: unknown
   linkType: soft

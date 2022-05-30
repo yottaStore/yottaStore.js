@@ -32,6 +32,7 @@ const {
 let shouldContinue = true
 let loopCount = 0
 
+await notifyDispatcher('Starting...')
 while ( shouldContinue ) {
   loopCount++
 

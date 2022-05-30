@@ -1,5 +1,5 @@
 {
-  "name": "loop",
+  "name": "@pkgs/loop",
   "packageManager": "yarn@3.2.1",
   "dependencies": {
     "@pkgs/allocator": "workspace:^",
