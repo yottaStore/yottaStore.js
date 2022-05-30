@@ -1,5 +1,6 @@
 {
-  "name": "@pkgs/loop",
+  "name": "@pkgs/worker",
+  "main": "workerFactory.mjs",
   "packageManager": "yarn@3.2.1",
   "dependencies": {
     "@pkgs/allocator": "workspace:^",

@@ -1,5 +1,0 @@
-{
-  "name": "@pkgs/consumer",
-  "main": "index.mjs",
-  "packageManager": "yarn@3.2.1"
-}

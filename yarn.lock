@@ -4,7 +4,7 @@
 __metadata:
   version: 6
 
-"@libs/build@workspace:libs/build":
+"@libs/build@workspace:^, @libs/build@workspace:libs/build":
   version: 0.0.0-use.local
   resolution: "@libs/build@workspace:libs/build"
   languageName: unknown
@@ -34,9 +34,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pkgs/loop@workspace:^, @pkgs/loop@workspace:pkgs/loop":
+"@pkgs/worker@workspace:^, @pkgs/worker@workspace:pkgs/worker":
   version: 0.0.0-use.local
-  resolution: "@pkgs/loop@workspace:pkgs/loop"
+  resolution: "@pkgs/worker@workspace:pkgs/worker"
   dependencies:
     "@pkgs/allocator": "workspace:^"
     "@pkgs/dispatcher": "workspace:^"
@@ -74,11 +74,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"nodeEV@workspace:svcs/nodeEV":
+"nodeEV@workspace:svcs/node":
   version: 0.0.0-use.local
-  resolution: "nodeEV@workspace:svcs/nodeEV"
+  resolution: "nodeEV@workspace:svcs/node"
   dependencies:
+    "@libs/build": "workspace:^"
     "@pkgs/consumer": "workspace:^"
-    "@pkgs/loop": "workspace:^"
+    "@pkgs/worker": "workspace:^"
   languageName: unknown
   linkType: soft

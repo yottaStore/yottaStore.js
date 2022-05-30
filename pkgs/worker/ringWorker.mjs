@@ -1,4 +1,3 @@
-import { parentPort } from 'node:worker_threads'
 import { arenaAllocatorFactory } from '@pkgs/allocator'
 import { io_uringFactory } from '@pkgs/io_uring'
 import { dispatcherFactory } from '@pkgs/dispatcher'
@@ -22,11 +21,10 @@ const {
 // Start listening for messages
 const {
   getRequests,
-  writeResponses,
-  callBackMap,
+  sendResponses,
   notifyDispatcher
 } = await dispatcherFactory({
-  parentPort
+
 })
 
 let shouldContinue = true
@@ -38,11 +36,11 @@ while ( shouldContinue ) {
 
   // Read batch of ready messages
   const responses = await readRing()
-  shouldContinue = await writeResponses({ responses, callBackMap })
+  shouldContinue = sendResponses({ responses })
 
   // Submit batch or requests
-  const requests = await getRequests({ responses, callBackMap })
-  await writeRing(...requests)
+  const requests = getRequests()
+  await writeRing(requests)
   shouldContinue = await notifyRing(requests.length)
 }
 
@@ -52,6 +50,4 @@ await notifyRing('Closing...')
 console.log(`Performed ${loopCount} loops.`)
 
 
-process.catch(() => {
-  shouldContinue = false
-})
+

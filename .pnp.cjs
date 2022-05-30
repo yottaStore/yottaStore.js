@@ -49,8 +49,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:pkgs/io_uring"\
       },\
       {\
-        "name": "@pkgs/loop",\
-        "reference": "workspace:pkgs/loop"\
+        "name": "@pkgs/worker",\
+        "reference": "workspace:pkgs/worker"\
       },\
       {\
         "name": "@svcs/compute",\
@@ -58,7 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       },\
       {\
         "name": "nodeEV",\
-        "reference": "workspace:svcs/nodeEV"\
+        "reference": "workspace:svcs/node"\
       },\
       {\
         "name": "@svsc/storage",\
@@ -73,13 +73,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@pkgs/consumer", ["workspace:pkgs/consumer"]],\
       ["@pkgs/dispatcher", ["workspace:pkgs/dispatcher"]],\
       ["@pkgs/io_uring", ["workspace:pkgs/io_uring"]],\
-      ["@pkgs/loop", ["workspace:pkgs/loop"]],\
+      ["@pkgs/worker", ["workspace:pkgs/worker"]],\
       ["@svcs/compute", ["workspace:svcs/compute"]],\
       ["@svsc/storage", ["workspace:svcs/storage"]],\
       ["@yottastore/yottaStore.js", ["workspace:."]],\
       ["dist", ["workspace:dist"]],\
       ["docs", ["workspace:docs"]],\
-      ["nodeEV", ["workspace:svcs/nodeEV"]]\
+      ["nodeEV", ["workspace:svcs/node"]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -137,11 +137,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["@pkgs/loop", [\
-        ["workspace:pkgs/loop", {\
-          "packageLocation": "./pkgs/loop/",\
+      ["@pkgs/worker", [\
+        ["workspace:pkgs/worker", {\
+          "packageLocation": "./pkgs/worker/",\
           "packageDependencies": [\
-            ["@pkgs/loop", "workspace:pkgs/loop"],\
+            ["@pkgs/worker", "workspace:pkgs/worker"],\
             ["@pkgs/allocator", "workspace:pkgs/allocator"],\
             ["@pkgs/dispatcher", "workspace:pkgs/dispatcher"],\
             ["@pkgs/io_uring", "workspace:pkgs/io_uring"]\
@@ -195,12 +195,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["nodeEV", [\
-        ["workspace:svcs/nodeEV", {\
-          "packageLocation": "./svcs/nodeEV/",\
+        ["workspace:svcs/node", {\
+          "packageLocation": "./svcs/node/",\
           "packageDependencies": [\
-            ["nodeEV", "workspace:svcs/nodeEV"],\
+            ["nodeEV", "workspace:svcs/node"],\
+            ["@libs/build", "workspace:libs/build"],\
             ["@pkgs/consumer", "workspace:pkgs/consumer"],\
-            ["@pkgs/loop", "workspace:pkgs/loop"]\
+            ["@pkgs/worker", "workspace:pkgs/worker"]\
           ],\
           "linkType": "SOFT"\
         }]\
